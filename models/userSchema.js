@@ -6,9 +6,9 @@ const userSchema = new mongoose.Schema({
 	pass: {type:String, required:true},
 	role: {type:String, required:true, default:'user'},
 	mobile: {type:String, required:true, minlength:10, maxlength:10},
-	balance: {type:Number, default:0}
+	projects: [Map]
 })
 
-const userModel = mongoose.model('vcreditUsers',userSchema)
+const userModel = mongoose.model('projectUsers',userSchema)
 
 module.exports=userModel

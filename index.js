@@ -7,7 +7,7 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 app.use(express.json())
-app.use('/api/register',registrationRouter)
+app.use('/api/auth',registrationRouter)
 
 mongoose.connect(process.env.DB_URI, {
   useNewUrlParser: true,
