@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
 	pass: {type:String, required:true},
 	role: {type:String, required:true, default:'user'},
 	mobile: {type:String, required:true, minlength:10, maxlength:10},
-	projects: [Map]
+	project_id: [String]
 })
 
 const userModel = mongoose.model('projectUsers',userSchema)
