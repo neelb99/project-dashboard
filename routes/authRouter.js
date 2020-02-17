@@ -10,16 +10,18 @@ router.post('/register', async (req,res,next)=>{
 		name: req.body.name,
 		pass: req.body.pass,
 		mobile: req.body.mobile,
-		role: 'user'
+		role: req.body.role?req.body.role:'user'
 	}
+	if(userObj.role==='faculty')
+		userObj.authpass = Math.floor(100000 + Math.random() * 900000)
 	const salt = await bcrypt.genSalt(10)
 	const hashed = await bcrypt.hash(userObj.pass, salt)
 	userObj.pass=hashed
-	if(userObj.roll.length!==10){
+	if(userObj.roll.length!==10 && userObj.role==='student'){
 		next(Error('Roll number must be 10 characters!'))
 		return
 	}
-	else if(userObj.mobile.length!==10){
+	else if(userObj.mobile.length!==10){	
 		next(Error('Mobile number must be 10 digits long!'))
 		return
 	}

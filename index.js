@@ -1,14 +1,14 @@
 const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
-const registrationRouter = require('./routes/registrationRouter.js')
+const authRouter = require('./routes/authRouter.js')
 const projectRouter = require('./routes/projectRouter.js')
 
 const app = express()
 const PORT = process.env.PORT || 5000
 
 app.use(express.json())
-app.use('/api/auth',registrationRouter)
+app.use('/api/auth',authRouter)
 app.use('/api/projects',projectRouter)
 
 mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
